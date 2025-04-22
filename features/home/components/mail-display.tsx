@@ -14,9 +14,20 @@ interface MailDisplayProps {
 }
 
 export function MailDisplay({ session }: MailDisplayProps) {
+  const [selectedSession, setSelectedSession] = React.useState<Session | null>(null);
+
   React.useEffect(() => {
-    console.log("Session updated:", session)
-  }, [session])
+    console.log("Session updated:", session);
+  }, [session]);
+
+  // چک کردن و انتخاب session
+  const handleSessionClick = (clickedSession: Session) => {
+    if (selectedSession?.id === clickedSession.id) {
+      setSelectedSession(null); // اگر همان session دوباره انتخاب شود، انتخاب لغو می‌شود
+    } else {
+      setSelectedSession(clickedSession);
+    }
+  };
 
   return (
     <div className="flex h-full flex-col">
@@ -33,6 +44,7 @@ export function MailDisplay({ session }: MailDisplayProps) {
             <TooltipContent>Archive</TooltipContent>
           </Tooltip>
         </div>
+        <div className="font-bold text-2xl">{session.title}</div>
       </div>
       <Separator />
 
@@ -40,13 +52,16 @@ export function MailDisplay({ session }: MailDisplayProps) {
       {session && session.messages.length > 0 ? (
         <div className="flex-1 space-y-4 overflow-y-auto p-2 sm:p-4">
           {session.messages.map((mail) => {
-            const isUser = mail.sender.toLowerCase() === "user"
+            const isUser = mail.sender.toLowerCase() === "user";
+            const isSelected = selectedSession?.id === session.id; // چک کردن اینکه session انتخابی است یا نه
+
             return (
               <div
                 key={mail.id}
-                className={`flex items-start gap-2 text-sm ${
-                  isUser ? "justify-end" : "justify-start"
+                className={`flex items-start gap-2 text-sm ${isUser ? "justify-end" : "justify-start"} ${
+                  isSelected ? "bg-gray-800" : "" // اگر انتخابی است، رنگ تیره‌تری اعمال شود
                 }`}
+                onClick={() => handleSessionClick(session)} // روی session کلیک شده
               >
                 {!isUser && (
                   <Avatar>
@@ -58,9 +73,7 @@ export function MailDisplay({ session }: MailDisplayProps) {
                 )}
                 <div
                   className={`rounded-xl px-4 py-2 max-w-xs sm:max-w-md ${
-                    isUser
-                      ? "bg-primary text-white ml-auto"
-                      : "bg-muted text-foreground"
+                    isUser ? "bg-primary text-white ml-auto" : "bg-muted text-foreground"
                   }`}
                 >
                   <div className="font-medium text-sm mb-1">{mail.sender}</div>
@@ -75,7 +88,7 @@ export function MailDisplay({ session }: MailDisplayProps) {
                   </Avatar>
                 )}
               </div>
-            )
+            );
           })}
         </div>
       ) : (
@@ -88,16 +101,13 @@ export function MailDisplay({ session }: MailDisplayProps) {
           <div className="grid gap-4">
             <Textarea
               className="min-h-[80px] p-3 sm:p-4 text-sm md:text-base"
-              placeholder={`Reply ${session?.messages[0]?.sender || "User"}...`}
+              placeholder={`ask anything .. `}
             />
             <div className="flex items-center flex-wrap gap-2">
-              <Label htmlFor="mute" className="flex items-center gap-2 text-xs font-normal">
-                <Switch id="mute" aria-label="Mute thread" /> Mute this thread
-              </Label>
               <Button
                 onClick={(e) => {
-                  e.preventDefault()
-                  alert("Reply sent!")
+                  e.preventDefault();
+                  alert("Reply sent!");
                 }}
                 size="sm"
                 className="ml-auto"
@@ -109,5 +119,5 @@ export function MailDisplay({ session }: MailDisplayProps) {
         </form>
       </div>
     </div>
-  )
+  );
 }

@@ -1,46 +1,50 @@
 'use client'
 
+import { useEffect, useState } from 'react'
+import { useRouter } from 'next/navigation'
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { z } from 'zod'
+import { toast } from 'sonner'
 import { FcGoogle } from 'react-icons/fc'
 import { FaGithub } from 'react-icons/fa'
+import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai'
+
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { SignInFlow } from '../types'
-import { useForm } from 'react-hook-form'
-import { z } from 'zod'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { toast } from 'sonner'
-import { useState } from 'react'
-import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai'
-import { useRouter } from 'next/navigation'
 
 interface SignInCardProps {
   setState: (state: SignInFlow) => void;
 }
 
-// Zod schema for validation
 const signInSchema = z.object({
-  email: z.string().email("Invalid email address"),
-  password: z.string().min(1, "Password is required"),
+  email: z.string().email('Invalid email address'),
+  password: z.string().min(1, 'Password is required'),
 })
 
 type SignInData = z.infer<typeof signInSchema>
 
 const SignInCard = ({ setState }: SignInCardProps) => {
-  const [showPassword, setShowPassword] = useState(false) 
   const router = useRouter()
+  const [showPassword, setShowPassword] = useState(false)
 
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors }
   } = useForm<SignInData>({
-    resolver: zodResolver(signInSchema),
-    defaultValues: {
-      email: "admin@example.com",
-      password: "12345"
-    }
+    resolver: zodResolver(signInSchema)
   })
+
+  useEffect(() => {
+    reset({
+      email: 'admin@example.com',
+      password: '12345'
+    })
+  }, [reset])
 
   const onSubmit = (data: SignInData) => {
     if (data.email === 'admin@example.com' && data.password === '12345') {
@@ -48,7 +52,6 @@ const SignInCard = ({ setState }: SignInCardProps) => {
       router.push('/home')
     } else {
       toast.error('Invalid email or password!')
-  
     }
   }
 
@@ -64,13 +67,14 @@ const SignInCard = ({ setState }: SignInCardProps) => {
       </CardHeader>
 
       <CardContent className="space-y-6 px-0 pb-0">
-        <form className="space-y-5" onSubmit={handleSubmit(onSubmit)}>
+        <form className="space-y-5" onSubmit={handleSubmit(onSubmit)} autoComplete="off">
           <div>
             <Input
               {...register("email")}
-              className="bg-black/30 text-white placeholder-gray-400 border border-white/10 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               placeholder="Email"
               type="email"
+              autoComplete="off"
+              className="bg-black/30 text-white placeholder-gray-400 border border-white/10 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             />
             {errors.email && (
               <p className="text-sm text-red-400 mt-1">{errors.email.message}</p>
@@ -80,9 +84,10 @@ const SignInCard = ({ setState }: SignInCardProps) => {
           <div className="relative">
             <Input
               {...register("password")}
-              className="bg-black/30 text-white placeholder-gray-400 border border-white/10 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               placeholder="Password"
               type={showPassword ? "text" : "password"}
+              autoComplete="off"
+              className="bg-black/30 text-white placeholder-gray-400 border border-white/10 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             />
             <span
               className="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer"
@@ -142,6 +147,4 @@ const SignInCard = ({ setState }: SignInCardProps) => {
 }
 
 export default SignInCard
-
-
-
+  

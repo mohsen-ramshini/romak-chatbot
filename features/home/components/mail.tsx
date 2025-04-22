@@ -13,7 +13,7 @@ import {
   Trash2,
   Users2,
 } from "lucide-react"
-
+import logo from "@/public/images/logo.png"
 import { cn } from "@/lib/utils"
 import { Input } from "@/components/ui/input"
 import {
@@ -30,6 +30,7 @@ import { Session } from "../data/data"
 import { useChatConfig } from "../hooks/use-chat-config"
 import { MailDisplay } from "./mail-display"
 import { Insights } from "./InsightsCard"
+import Image from "next/image"
 
 interface MailProps {
   sessions: Session[]
@@ -176,9 +177,17 @@ export function Mail({
           <ResizableHandle withHandle />
 
           <ResizablePanel defaultSize={defaultLayout[1]} minSize={30}>
-            <Tabs defaultValue="all">
+            <Tabs defaultValue="all" className="overflow-auto h-full">
               <div className="flex items-center px-4 py-2">
-                <h1 className="text-lg lg:text-xl font-bold">Rmoak</h1>
+                <div className="text-lg lg:text-xl font-bold">
+                <Image
+                      src="https://romaktrading.com/wp-content/uploads/2021/07/romak-logo-1.png"
+                      alt="Romak Logo"
+                      width={120}
+                      height={40}
+                      priority
+                  />
+                </div>
                 <TabsList className="ml-auto">
                   <TabsTrigger value="all" className="text-zinc-600 dark:text-zinc-200">
                     Sessions
