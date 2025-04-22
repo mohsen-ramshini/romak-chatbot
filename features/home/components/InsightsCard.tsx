@@ -62,7 +62,7 @@ export const insights: Insight[] = Array.from({ length: 10 }, (_, i) => ({
   date: "1403/01/15"
 }))
 
-// کارت شیک شده
+// کارت جداگانه برای هر insight
 interface InsightCardProps {
   insight: Insight
 }
@@ -96,9 +96,12 @@ const InsightCard = ({ insight }: InsightCardProps) => {
   )
 }
 
+interface InsightsProps {
+  isCollapsed: boolean
+}
 
 // کامپوننت اصلی Insights
-export function Insights() {
+export function Insights({ isCollapsed }: InsightsProps) {
   const [selectedMaterial, setSelectedMaterial] = React.useState("آهن")
 
   const selectedData = chartDataMap[selectedMaterial]
@@ -116,7 +119,7 @@ export function Insights() {
   }
 
   return (
-    <div className="p-6 ">
+    <div className="p-6">
       <h1 className="text-2xl font-semibold mb-4">Insights</h1>
       <Separator />
 
@@ -142,8 +145,13 @@ export function Insights() {
         </div>
       </div>
 
-      {/* لیست کارت‌ها */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6 max-h-[400px] pr-2 scrollbar-thin scrollbar-thumb-muted-foreground">
+      {/* لیست کارت‌ها - واکنش به isCollapsed */}
+      <div
+        className={cn(
+          "grid gap-6 max-h-[400px] pr-2 scrollbar-thin scrollbar-thumb-muted-foreground transition-all duration-300",
+          isCollapsed ? "grid-cols-1" : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
+        )}
+      >
         {insights.map((insight) => (
           <InsightCard key={insight.id} insight={insight} />
         ))}
