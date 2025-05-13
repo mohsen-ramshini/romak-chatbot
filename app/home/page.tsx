@@ -1,9 +1,9 @@
 import { cookies } from "next/headers"
 
 
-import { Mail } from "@/features/home/components/mail"
-import { sessions } from "@/features/home/data/data"
-import { useEffect } from "react"
+import { Mail } from "../../features/home/components/mail"
+import { sessions } from "../../features/home/data/data"
+
 
 export default async function MailPage() {
   const cookieStore = await cookies() 
