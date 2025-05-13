@@ -10,17 +10,17 @@ import {
   Legend
 } from "chart.js"
 import { Line } from "react-chartjs-2"
-import { Separator } from "@/components/ui/separator"
-import { Card } from "@/components/ui/card"
+import { Separator } from "../../../components/ui/separator"
+import { Card } from "../../../components/ui/card"
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue
-} from "@/components/ui/select"
+} from "../../../components/ui/select"
 import { ArrowDown, ArrowUp } from "lucide-react"
-import { cn } from "@/lib/utils"
+import { cn } from "../../../lib/utils"
 
 // ثبت ماژول‌ها برای chart.js
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend)

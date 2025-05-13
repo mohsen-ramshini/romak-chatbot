@@ -3,13 +3,13 @@
 import Link from "next/link"
 import { LucideIcon } from "lucide-react"
 
-import { cn } from "@/lib/utils"
-import { buttonVariants } from "@/components/ui/button"
+import { cn } from "../../../lib/utils"
+import { buttonVariants } from "../../../components/ui/button"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/components/ui/tooltip"
+} from "../../../components/ui/tooltip"
 
 interface NavProps {
   isCollapsed: boolean
