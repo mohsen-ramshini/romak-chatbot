@@ -2,7 +2,7 @@
 
 A modern, responsive, and accessible **Chatbot UI** built with Next.js, TailwindCSS, and Radix UI components. This project serves as a starter template or production-ready chatbot interface, optimized for DX and UX.
 
-🎥 [Watch Demo](https://github.com/mohsen-ramshini/romak-chatbot/raw/main/demo.mp4)
+🎥 [Watch Demo](https://romak-chatbot.vercel.app/demo.mp4)
 
 
 
