@@ -5,8 +5,8 @@ import {
     DropdownMenuLabel,
     DropdownMenuSeparator,
     DropdownMenuTrigger,
-  } from "@/components/ui/dropdown-menu"
-  import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+  } from "../../../components/ui/dropdown-menu"
+  import { Avatar, AvatarFallback, AvatarImage } from "../../../components/ui/avatar"
   import { LogOut, Settings, User } from "lucide-react"
 import { useRouter } from "next/navigation"
   

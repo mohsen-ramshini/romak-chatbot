@@ -13,24 +13,23 @@ import {
   Trash2,
   Users2,
 } from "lucide-react"
-import logo from "@/public/images/logo.png"
-import { cn } from "@/lib/utils"
-import { Input } from "@/components/ui/input"
+import { cn } from "../../../lib/utils"
+import { Input } from "../../../components/ui/input"
 import {
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
-} from "@/components/ui/resizable"
-import { Separator } from "@/components/ui/separator"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { TooltipProvider } from "@/components/ui/tooltip"
+} from "../../../components/ui/resizable"
+import { Separator } from "../../../components/ui/separator"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../components/ui/tabs"
+import { TooltipProvider } from "../../../components/ui/tooltip"
 import { MailList } from "./mail-list"
 import { Nav } from "./nav"
 import { Session } from "../data/data"
 import { useChatConfig } from "../hooks/use-chat-config"
 import { MailDisplay } from "./mail-display"
 import { Insights } from "./InsightsCard"
-import Image from "next/image"
+// import Image from "next/image"
 import { AccountSwitcher } from "./account-switcher"
 import Profile from "./Profile"
 
@@ -230,13 +229,13 @@ export function Mail({
             <Tabs defaultValue="all" className="overflow-auto h-full">
               <div className="flex items-center px-4 py-2">
                 <div className="text-lg lg:text-xl font-bold">
-                <Image
+                {/* <Image
                       src="https://romaktrading.com/wp-content/uploads/2021/07/romak-logo-1.png"
                       alt="Romak Logo"
                       width={120}
                       height={40}
                       priority
-                  />
+                  /> */}
                 </div>
                 <TabsList className="ml-auto">
                   <TabsTrigger value="all" className="text-zinc-600 dark:text-zinc-200">

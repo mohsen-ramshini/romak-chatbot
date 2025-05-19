@@ -1,13 +1,13 @@
 import * as React from "react"
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
-import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
-import { Button } from "@/components/ui/button"
+import { Avatar, AvatarImage, AvatarFallback } from "../../../components/ui/avatar"
+import { Tooltip, TooltipContent, TooltipTrigger } from "../../../components/ui/tooltip"
+import { Button } from "../../../components/ui/button"
 import { Archive } from "lucide-react"
-import { Separator } from "@/components/ui/separator"
+import { Separator } from "../../../components/ui/separator"
 import { Session } from "../data/data"
-import { Textarea } from "@/components/ui/textarea"
-import { Label } from "@/components/ui/label"
-import { Switch } from "@/components/ui/switch"
+import { Textarea } from "../../../components/ui/textarea"
+import { Label } from "../../../components/ui/label"
+import { Switch } from "../../../components/ui/switch"
 
 interface MailDisplayProps {
   session: Session

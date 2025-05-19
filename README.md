@@ -1,36 +1,129 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📦 romak-chatbot
 
-## Getting Started
+A modern, responsive, and accessible **Chatbot UI** built with Next.js, TailwindCSS, and Radix UI components. This project serves as a starter template or production-ready chatbot interface, optimized for DX and UX.
 
-First, run the development server:
+🔗 [Live Demo](https://romak-chatbot.vercel.app)
+
+---
+
+## ✨ Features
+
+- ⚡ **Next.js 15** – App Router, file-based routing  
+- 🎨 **TailwindCSS 4** – Utility-first CSS framework  
+- 🧩 **Radix UI Primitives** – Accessible components  
+- 🪄 **Animated UI** – via `tw-animate-css`  
+- 🧠 **React Hook Form + Zod** – For form validation  
+- 🧬 **Jotai** – Atomic global state management  
+- 📊 **Charts & Data** – `chart.js` + `react-chartjs-2`  
+- 🗓️ **Date Picker** – `react-day-picker`  
+- 🌗 **Dark Mode** – via `next-themes`  
+- 🧰 **Resizable Panels** – via `react-resizable-panels`  
+- 💡 **Tooltips, Popovers, Tabs, Avatars** – Radix suite  
+- 🔥 **Toast Notifications** – using `sonner`  
+- 🔧 **ESLint + TypeScript** – Developer-friendly  
+
+---
+
+## 📁 Folder Structure (Simplified)
+
+/app
+/chat → Chat UI components & pages
+/components → Reusable UI elements
+/hooks → Custom React hooks
+/lib → Helpers & utilities
+/styles → Tailwind + global styles
+/types → TypeScript types
+
+public/ → Static assets
+tailwind.config.ts
+postcss.config.js
+tsconfig.json
+
+
+
+---
+
+## 🚀 Getting Started
 
 ```bash
+# 1. Clone the repo
+git clone https://github.com/mohsen-ramshini/romak-chatbot.git
+cd romak-chatbot
+
+# 2. Install dependencies
+npm install
+
+# 3. Run the dev server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Your chatbot UI will be running at http://localhost:3000
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+📦 Used Packages
+✅ Dependencies
+next@15.3.0
 
-## Learn More
+react@18.2.0
 
-To learn more about Next.js, take a look at the following resources:
+react-dom@18.2.0
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+tailwindcss@4.1.6
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+@hookform/resolvers
 
-## Deploy on Vercel
+react-hook-form
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+zod
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+jotai
+
+lucide-react
+
+chart.js & react-chartjs-2
+
+react-day-picker
+
+react-icons
+
+react-resizable-panels
+
+next-themes
+
+sonner
+
+clsx, class-variance-authority, tailwind-merge
+
+tw-animate-css
+
+Radix UI packages:
+@radix-ui/react-* (avatar, tooltip, popover, tabs, select, etc.)
+
+🛠 DevDependencies
+eslint + eslint-config-next
+
+typescript
+
+@types/node, @types/react, @types/react-dom
+
+autoprefixer, postcss, @tailwindcss/postcss
+
+
+📦 Deployment
+This project is optimized for Vercel deployment.
+
+To deploy:
+
+Push your code to GitHub
+
+Import the repo in Vercel
+
+Set the build command: npm run build
+
+Output directory: .next
+
+🧾 License
+Licensed under the MIT License.
+
+🙌 Author
+Made with ❤️ by Mohsen Ramshini
+
